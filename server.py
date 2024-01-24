@@ -11,7 +11,6 @@ def accept(sock, mask):
     sel.register(conn, selectors.EVENT_READ, read)
 
 def read(conn: socket.socket, mask):
-    conn.
     data = conn.recv(1024)  # Should be ready
     if data:
         print('echoing', repr(data), 'to', conn)
