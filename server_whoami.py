@@ -10,10 +10,16 @@ def accept(sock: socket.socket, sel: selectors.BaseSelector, mask):
     sel.register(conn, selectors.EVENT_READ, {"type": "data_socket"})
 
 def read(conn: socket.socket, sel: selectors.BaseSelector, mask):
-    data = conn.recv(1024)  # Should be ready
+    # For simplicity, 
+    # 1. max size of `GET` and `POST` requests data is 4096 bytes
+    # 2. close the connection after response
+    chunk = conn.recv(4096)
     addr = conn.getpeername()
-    print(f"Read - data[{repr(data)}] in conn[{conn}] from addr[{addr}]\n")
-    if data:
+    print(f"Read - data[{repr(chunk)}] in conn[{conn}] from addr[{addr}]\n")
+    
+    if chunk:
+        data = chunk.decode("utf-8")
+        # Construct HTTP response message
         message =(
             "HTTP/1.1 200 OK\r\n",
             "Content-type: text/html\r\n",
@@ -25,17 +31,17 @@ def read(conn: socket.socket, sel: selectors.BaseSelector, mask):
                         <h2>Server address: {HOST}:{PORT}</h2>
                         <h3>You're connected through address: {addr[0]}:{addr[1]}</h3>
                         <body>
-                            <pre>{data.decode("utf-8")}<pre>
+                            <pre>{data}<pre>
                         </body>
                     </body>
                 </html>""")
         message = "".join(message)
-        conn.send(message.encode("utf8"))  # Hope it won't block
-    else:
-        print(f'Close - conn[{conn}] from addr[{addr}]\n')
-        sel.unregister(conn)
+        conn.sendall(message.encode("utf8"))
+        print(f'Close\n')
         conn.close()
-
+    print(f'Close - conn[{conn}] from addr[{addr}]\n')
+    sel.unregister(conn)
+    conn.close()
 
 HOST = "127.0.0.1"
 PORT = 3234
