@@ -1,5 +1,7 @@
 """
-Heap can be efficiently represented as an array
+Heap can be efficiently used to access minimum element on O(1) along with pop and push an element on O(log n).
+
+In heap, the items are represented in an array, making it efficient in memory.
 
 - get_root(): Fast access to maximum/minimum element (O(1)) 
 - pop(): Pop and return the smallest item(root) from the heap on (O(log n))
