@@ -7,21 +7,17 @@ def list_all_files(root_dir):
     w = os.walk(root_dir)
     for (dir, _, filenames) in w:
         for f in filenames:
-            # Operate each file here
+            # List the file under the dir
             print(os.path.join(dir, f))
-            # Delete all files starting with "."
-            # if f.startswith("."):
-            #     os.remove(os.path.join(dir, f))
+            # You operation here ...
+            pass
 
-"""   
-def list_all_files(root_dir):
+def delete_all_files_starting_with_dot(root_dir):
     w = os.walk(root_dir)
     for (dir, _, filenames) in w:
         for f in filenames:
-            # Operate each file here
             print(os.path.join(dir, f))
             # Delete all files starting with "."
             if f.startswith("."):
                 os.remove(os.path.join(dir, f))
                 print(f"Delete {os.path.join(dir, f)}")
-"""
