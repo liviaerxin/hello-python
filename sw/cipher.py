@@ -59,7 +59,7 @@ print("Decrypted:", decrypted_text.decode('utf-8'))
 
 def test_smon_decrypt():
     key = b"Gr4S2eiNl7zq5MrU"
-    with open("data.base64", "r") as fp:
+    with open("data.b64", "r") as fp:
         data = fp.read()
     
     cipher_data = base64.b64decode(data)
