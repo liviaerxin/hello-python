@@ -2,8 +2,11 @@ import joblib
 import re
 from sklearn.neural_network import MLPClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
+import os
 
-model = joblib.load('spam_classifier.joblib')
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
+model = joblib.load(os.path.join(dir_path, 'spam_classifier.joblib'))
 
 def preprocessor(text):
     text = re.sub('<[^>]*>', '', text) # Effectively removes HTML markup tags

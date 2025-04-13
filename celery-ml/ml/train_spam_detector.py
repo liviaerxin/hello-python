@@ -1,9 +1,10 @@
 import numpy as np
 import pandas as pd
+import os
 
 # Read the Data
-
-data = pd.read_csv('./data/spam_data.csv')
+dir_path = os.path.dirname(os.path.realpath(__file__))
+data = pd.read_csv(os.path.join(dir_path, 'data/spam_data.csv'))
 
 # Text Preprocessing
 
@@ -48,4 +49,4 @@ print('Accuracy: {} %'.format(100 * accuracy_score(y_test, y_pred)))
 # Saving the Pipeline
 
 import joblib
-joblib.dump(neural_net_pipeline, 'spam_classifier.joblib')
+joblib.dump(neural_net_pipeline, os.path.join(dir_path, 'spam_classifier.joblib'))
