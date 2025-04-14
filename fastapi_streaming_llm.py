@@ -3,7 +3,7 @@ from fastapi.responses import StreamingResponse
 import asyncio
 import json
 
-# `uvicorn app_streaming_llm:app --reload`
+# `uvicorn fastapi_streaming_llm:app --reload`
 app = FastAPI()
 
 # Mock OpenAPI API token generation

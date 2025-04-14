@@ -1,6 +1,6 @@
 """_summary_
 Usage:
-uvicorn app_tusd:app --reload
+uvicorn fastapi_tusd:app --reload
 
 Description:
 A file resumable upload server implemented by FastAPI comply with the `tus` resumable upload protocol

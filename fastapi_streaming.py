@@ -1,5 +1,5 @@
 """
-uvicorn app_streaming:app --reload
+uvicorn fastapi_streaming:app --reload
 """
 
 from typing import Union, BinaryIO, Tuple

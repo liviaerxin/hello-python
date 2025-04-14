@@ -1,6 +1,6 @@
 """
 Usage:
-uvicorn app_resumable_upload:app --reload
+uvicorn fastapi_resumable_upload:app --reload
 
 Description:
 Http Upload file with progress and resumable features, client and server are supposed to work in their agreed protocol.

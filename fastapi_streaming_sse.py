@@ -3,7 +3,7 @@ from fastapi.responses import StreamingResponse
 import asyncio
 import time
 
-# `uvicorn app_streaming_sse:app --reload`
+# `uvicorn fastapi_streaming_sse:app --reload`
 app = FastAPI()
 
 # This function is an async generator that will yield data over time
